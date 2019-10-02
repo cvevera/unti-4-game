@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>unit-4-game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script type="text/javascript" src = "assets/javascript/game.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <div class="row">
+            <div class="col-6">
+        <h1>Crystal Collector!</h1>
+    </div>
+    </div>
+    </header>
+    <div class="container">
+        <div class="row">
+    <div class="instructions">
+        <p>You will be given a random number at the start of this game.</p>
+        <p>Ther are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+        <p>You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.</p>
+        <p>The value of each crystal is hidden from you until you click on it.</p>
+        <p>Each time you begin the game, the game will change the value of each crystal.</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6 target-number">
+ 
+    </div>
+    <div class="col-6 wins-losses">
+        <h3>Wins :</h3>
+        <h3>Losses :</h3>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-2 crystalrow" id="crystal1">
+            <img src="assets/images/crystal1.jpeg" width="200px" height="200px">
+        </div>
+        <div class="col-2 crystalrow" id="crystal2">
+                <img src="assets/images/crystal2.jpeg" width="200px" height="200px">
+            </div>
+            <div class="col-2 crystalrow" id="crystal3">
+                    <img src="assets/images/crystal3.jpeg" width="200px" height="200px">
+                </div>
+                <div class="col-2 crystalrow" id="crystal4">
+                        <img src="assets/images/crystal4.jpeg" width="200px" height="200px">
+                    </div>
+    </div>
+    <div class="row">
+        <div class="col-12 total-score-is">
+Your total score is:
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 random-number">
+            
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+
+var randomNumber= "";
+var total= 0;
+// var counter = 0;
+// var crystalOne= 0;
+// var crystalTwo= 0;
+// var crystalThree= 0;
+// var crystalFour= 0;
+var crystalVal = [];
+
+
+
+
+// between 19-120
+    function randomIntFromInterval(min, max) { // min and max included 
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+
+
+
+function newgame(){
+    var randomNumber = randomIntFromInterval(19,120)
+    $(".target-number").text("Target: " + randomNumber);
+    console.log(randomNumber);
+    total = 0;
+    // crystalVal1();
+    // crystalVal2();
+    // crystalVal3();
+    // crystalVal4();
+    fourRandomNumbers();
+    $(".total-score-is").text("Your total score is" + total);
+}; 
+
+
+function fourRandomNumbers() {
+        for (var i = 0; i < 4; i++) {
+            var num = Math.floor(Math.random() * 12 + 1);
+            crystalVal.push(num);
+        }
+    }
+
+
+
+
+newgame()
+
+
+$("#crystal1").click(function (){
+    total= total + crystalVal[0];
+    $(".total-score-is").text(total)
+});
+$("#crystal2").click(function (){
+    total= total + crystalVal[1];
+    $(".total-score-is").text(total)
+
+});
+$("#crystal3").click(function (){
+    total= total + crystalVal[2];
+    $(".total-score-is").text(total)
+
+});
+$("#crystal4").click(function (){
+    total= total + crystalVal[3];
+    $(".total-score-is").text(total)
+
+});
+
+
+
+</script>
+
+</body>
+</html>
