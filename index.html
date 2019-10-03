@@ -11,7 +11,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<script type="text/javascript" src = "assets/javascript/game.js"></script>
+	<!-- <script type="text/javascript" src = "assets/javascript/game.js"></script> -->
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
@@ -39,8 +39,8 @@
  
     </div>
     <div class="col-6 wins-losses">
-        <h3>Wins :</h3>
-        <h3>Losses :</h3>
+        <h3 id="numberWins">Wins :</h3>
+        <h3 id="numberLosses">Losses :</h3>
     </div>
 </div>
     <div class="row">
@@ -72,7 +72,7 @@ Your total score is:
 
 <script>
 
-var randomNumber= "";
+var randomNumber= 0;
 var total= 0;
 // var counter = 0;
 // var crystalOne= 0;
@@ -80,6 +80,10 @@ var total= 0;
 // var crystalThree= 0;
 // var crystalFour= 0;
 var crystalVal = [];
+var wins = 0;
+var losses = 0;
+$('#numberWins').text("Wins: " + wins);
+$('#numberLosses').text("Losses: " + losses);
 
 
 
@@ -121,22 +125,53 @@ newgame()
 $("#crystal1").click(function (){
     total= total + crystalVal[0];
     $(".total-score-is").text(total)
+    if (total == randomNumber) {
+    alert("You Win!")
+    wins++;
+}
+if (total < randomNumber) {
+    alert("You Lose")
+    losses++;
+}
 });
 $("#crystal2").click(function (){
     total= total + crystalVal[1];
     $(".total-score-is").text(total)
-
+    if (total == randomNumber) {
+    alert("You Win!")
+    wins++;
+}
+else if (total < randomNumber) {
+    alert("You Lose")
+    losses++;
+}
 });
 $("#crystal3").click(function (){
     total= total + crystalVal[2];
     $(".total-score-is").text(total)
-
+    if (total == randomNumber) {
+    alert("You Win!")
+    wins++;
+}
+else if (total < randomNumber) {
+    alert("You Lose")
+    losses++;
+}
 });
 $("#crystal4").click(function (){
     total= total + crystalVal[3];
     $(".total-score-is").text(total)
-
+    if (total == randomNumber) {
+    alert("You Win!")
+    wins++;
+}
+else if (total > randomNumber) {
+    alert("You Lose")
+    losses++;
+}
 });
+
+
 
 
 
