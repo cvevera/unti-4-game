@@ -26,7 +26,7 @@
     </header>
     <div class="container">
         <div class="row">
-    <div class=" col- 12 instructions">
+    <div class=" col-12 instructions">
         <p>You will be given a random number at the start of this game.</p>
         <p>Ther are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
         <p>You win the game by matching your total score to random number, you lose the game if your total score goes above the random number.</p>
@@ -36,7 +36,7 @@
 </div>
 <div class="row">
     <div class="col-3 wins-losses" >
-        <h3 id="target-number"></h3>
+        <h3 id="target-number">Target:</h3>
         <h3>   </h3>
     </div>
     <div class="col-3 wins-losses">
@@ -93,15 +93,19 @@ var losses = 0;
 
 
 function newgame(){
-    var randomNumber = Math.floor(Math.random() * (120-19) + 19);
-    $("#target-number").html(randomNumber);
+    randomNumber = Math.floor(Math.random() * (120-19) + 19);
+    $("#target-number").text("Target: " + randomNumber);
     console.log(randomNumber);
     total = 0;
-    var crystal1= 0;
-    var crystal2= 0;
-    var crystal3= 0;
-    var crystal4= 0;
-    fourRandomNumbers();
+    var crystal1= Math.floor(Math.random() * 12 + 1);
+    console.log(crystal1)
+    var crystal2= Math.floor(Math.random() * 12 + 1);
+    console.log(crystal2)
+    var crystal3= Math.floor(Math.random() * 12 + 1);
+    console.log(crystal3)
+    var crystal4= Math.floor(Math.random() * 12 + 1);
+    console.log(crystal4)
+    // fourRandomNumbers();
     $(".total").text(0);
 }; 
 
@@ -160,38 +164,26 @@ $("#crystal2").click(function (){
     // total= total + crystalVal[1];
     total = crystal2 + total; 
     $("#total").html(total);
-    console.log("Total is" + total);
-    if (total === randomNumber){
-          win();
-    }
-         else if (total > randomNumber){
-          lose();
-         }
+    console.log (total, randomNumber)
+    // console.log("Total is" + total);
+    winLoseCheck()
         
 });
 $("#crystal3").click(function (){
     // total= total + crystalVal[2];
     total = crystal3 + total; 
     $("#total").html(total);
-    console.log(total);
-    if (total === randomNumber){
-          win();
-        }
-        else if (total > randomNumber) {
-          lose();
-        } 
+    console.log (total, randomNumber)
+    // console.log(total);
+    winLoseCheck()
 });
 $("#crystal4").click(function (){
     // total = total + crystalVal[3];
     total = crystal4 + total; 
     $("#total").html(total);
-    console.log(total);
-    if (total === randomNumber){
-          win();
-        }
-        else if (total > randomNumber) {    
-          lose();
-        } 
+    console.log (total, randomNumber)
+    // console.log(total);
+    winLoseCheck()
 
 
 });
