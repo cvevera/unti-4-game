@@ -1,32 +1,80 @@
+$(document).ready(function() {
 
-// var randomNumber= "";
-// var total= "";
-// var crystalOne= 0;
-// var crystalTwo= 0;
-// var crystalThree= 0;
-// var crystalFour= 0;
-
-
-
-// // // between 19-120
-// //     function randomIntFromInterval(min, max) { // min and max included 
-// //         return Math.floor(Math.random() * (max - min + 1) + min);
-// //       }
-
-
-
-// // function newgame(){
-// //     var randomNumber = randomIntFromInterval(19,120)
-// //     $(".target-number").text("Target: " + randomNumber);
-// //     console.log(randomNumber);
-// //     total = 0;
-// //     $(".total-score-is").text("Your total score is" + total);
-// // }; 
-
-
-// // newgame()
-
-
-// // $("#crystal1").click(function (){
-// //     alert("clicked")
-// // });
+    var randomNumber= Math.floor(Math.random() * (120-19) + 19);
+    $("#target-number").text("Target: " + randomNumber);
+    var total= 0;
+    var crystal1= Math.floor(Math.random() * 12 + 1);
+    var crystal2= Math.floor(Math.random() * 12 + 1);
+    var crystal3= Math.floor(Math.random() * 12 + 1);
+    var crystal4= Math.floor(Math.random() * 12 + 1);
+    var wins = 0;
+    var losses = 0;
+    
+    function newgame(){
+        randomNumber = Math.floor(Math.random() * (120-19) + 19);
+        $("#target-number").text("Target: " + randomNumber);
+        console.log(randomNumber);
+        total = 0;
+        crystal1= Math.floor(Math.random() * 12 + 1);
+        console.log(crystal1)
+        crystal2= Math.floor(Math.random() * 12 + 1);
+        console.log(crystal2)
+        crystal3= Math.floor(Math.random() * 12 + 1);
+        console.log(crystal3)
+        crystal4= Math.floor(Math.random() * 12 + 1);
+        console.log(crystal4)
+        $(".total").text(0);
+    }; 
+    
+    function win(){
+    alert("You won!");
+      wins++; 
+      $('#numberWins').text("Wins: " + wins);
+      newgame();
+    }
+    
+    function lose(){
+    alert ("You lose!");
+      losses++;
+      $('#numberLosses').text("Losses: " + losses);
+      newgame()
+    }
+    
+    function winLoseCheck() {
+        if (total === randomNumber){
+              win();
+        }
+            else if (total > randomNumber) {
+              lose();
+            } 
+    }
+    
+    $("#crystal1").click(function (){
+        total = crystal1 + total; 
+        $("#total").html(total);
+        console.log (total, randomNumber)
+        winLoseCheck()
+    
+    });
+    $("#crystal2").click(function (){
+        total = crystal2 + total; 
+        $("#total").html(total);
+        console.log (total, randomNumber)
+        winLoseCheck()
+            
+    });
+    $("#crystal3").click(function (){
+        total = crystal3 + total; 
+        $("#total").html(total);
+        console.log (total, randomNumber)
+        winLoseCheck()
+    });
+    $("#crystal4").click(function (){
+        total = crystal4 + total; 
+        $("#total").html(total);
+        console.log (total, randomNumber)
+        winLoseCheck()
+    });
+    
+    });
+    
